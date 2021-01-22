@@ -55,6 +55,6 @@ EOT
 
 resource "null_resource" "hosts_provisioner" {
   provisioner "local-exec" {
-    command = "echo \"${local.hosts}\" > ../hosts.yml"
+    command = "echo \"${local.hosts}\" > hosts.yml"
   }
 }
