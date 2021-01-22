@@ -2,10 +2,6 @@ locals {
   hosts = <<EOT
 all:
   vars:
-
-    ansible_ssh_common_args: -o StrictHostKeyChecking=no -o IdentitiesOnly=yes
-    ansible_connection: ssh
-    ansible_ssh_user: centos
     ansible_become: true
 
     ssl_enabled: true
