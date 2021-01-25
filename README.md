@@ -5,6 +5,8 @@ Prerequisistes:
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
 
+docker build . -t localhost/awx:latest 
+
 
 # Update job template to skip tags package
 
