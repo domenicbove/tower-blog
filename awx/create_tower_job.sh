@@ -1,7 +1,8 @@
 #!/bin/bash
-export TOWER_HOST=http://localhost:8052
-export TOWER_USERNAME=admin
-export TOWER_PASSWORD=password
+echo "______Build AWX CLI Docker Image________"
+docker build . -t localhost/awx:latest
+
+alias awx="docker run --rm -it --env TOWER_HOST=http://localhost:8052 --env TOWER_USERNAME=admin --env TOWER_PASSWORD=password localhost/awx:latest awx"
 
 echo "______Create Default Organization________"
 awx organizations create --name Default
