@@ -5,9 +5,9 @@
 ## Usage
 Fork this repo
 
-Clone your fork
+Clone your fork, best to use HTTPS because Tower needs access
 ```
-export REPO_URL=git@github.com:your-fork/tower-blog
+export REPO_URL=https://github.com/domenicbove/tower-blog
 
 git clone $REPO_URL
 ```
@@ -21,6 +21,13 @@ export TF_VAR_subnet=subnet-xxxx
 
 cd terraform
 ./provision.sh
+```
+
+Commit the updated inventory file, and push to your fork
+```
+git add terraform/hosts.yml
+git commit -m 'Provisioned infrastructure and updated inventory file.'
+git push origin master
 ```
 
 Stand up Ansible Tower
@@ -37,6 +44,8 @@ Create CP-Ansible Job
 Go to http://localhost:8052 in your browser and login with credentials admin/password
 
 Under Jobs you can launch Deploy on AWS
+
+![](screenshots/job-output.png)
 
 ## Next Steps
 You now have a successful Confluent Platform Deployment automated with Ansible Tower.
