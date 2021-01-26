@@ -82,7 +82,7 @@ variable "rest_proxy_instance_count" {
 
 variable "ksql_instance_count" {
   description = "EC2 instance count of KSQL Nodes"
-  default     = "2"
+  default     = "1"
 }
 
 variable "control_center_instance_count" {

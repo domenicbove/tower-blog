@@ -1,26 +1,32 @@
 ## Prerequisistes:
 - [Docker](https://docs.docker.com/desktop/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
+- An AWS Subnet, preferably in us-west-2
 
 ## Usage
-Fork this repo
+Fork this repo. Your fork will serve as a Repo Containing your infrastructure as code.
 
-Clone your fork, best to use HTTPS because Tower needs access
+Set REPO_URL environment variable and clone your fork, best to use HTTPS because Tower needs access
 ```
 export REPO_URL=https://github.com/domenicbove/tower-blog
 
 git clone $REPO_URL
 ```
 
-Provision AWS Infrastructure
+Set AWS Environment Variables
 ```
 export AWS_ACCESS_KEY_ID="key"
 export AWS_SECRET_ACCESS_KEY="secret"
 export TF_VAR_vpc_id=vpc-xxxx
 export TF_VAR_subnet=subnet-xxxx
 
-cd terraform
-./provision.sh
+# If subnet outside of us-west-2 set below ami variable to centos image within your region
+# export TF_VAR_ami=ami-xxxx
+```
+
+Provision AWS Infrastructure
+```
+make create-infra
 ```
 
 Commit the updated inventory file, and push to your fork
@@ -32,13 +38,12 @@ git push origin master
 
 Stand up Ansible Tower
 ```
-cd awx
-./start_tower.sh
+make start-tower
 ```
 
 Create CP-Ansible Job
 ```
-./create_tower_job
+make stop-tower
 ```
 
 Go to http://localhost:8052 in your browser and login with credentials admin/password

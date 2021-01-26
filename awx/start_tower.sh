@@ -1,4 +1,6 @@
 #!/bin/bash
+cd "$(dirname "$0")"
+
 echo "_____Starting Databases_______"
 docker-compose up -d redis postgres
 

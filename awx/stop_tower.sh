@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# cd awx/awxcompose
+cd "$(dirname "$0")"
 
 docker-compose down
