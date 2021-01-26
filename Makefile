@@ -11,4 +11,4 @@ create-infra:
 	terraform/provision.sh
 
 destroy-infra:
-	cd terraform && docker run -it --rm -v '$(pwd):$(pwd)' -w '$(pwd)' hashicorp/terraform:light destroy --auto-approve 
+	terraform/destroy.sh
