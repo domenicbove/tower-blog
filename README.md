@@ -43,7 +43,7 @@ make start-tower
 
 Create CP-Ansible Job
 ```
-make stop-tower
+make create-tower-job
 ```
 
 Go to http://localhost:8052 in your browser and login with credentials admin/password
@@ -55,7 +55,7 @@ Under Jobs you can launch Deploy on AWS
 ## Next Steps
 You now have a successful Confluent Platform Deployment automated with Ansible Tower.
 
-Starting in CP-Anisble 6.1.0 we have added Reconfiguration. This means you can update the Job Template and add the tag "package" under the skip tags field. And you can add [Git Webhooks](https://docs.ansible.com/ansible-tower/latest/html/userguide/webhooks.html) as well. This amounts to any udates to your inventory in Git can trigger Ansible Tower to reconfigure your deployment in true GitOps fashion
+In CP-Anisble 6.1.0 we have added Reconfiguration *link*. This means you can update the Job Template and add the tag "package" under the skip tags field. And you can add [Git Webhooks](https://docs.ansible.com/ansible-tower/latest/html/userguide/webhooks.html) as well. This amounts to any updates to your inventory in Git can trigger Ansible Tower to reconfigure your deployment in true GitOps fashion!
 
 ## Future Ideas
-The terraform code that enables this blog is great for demos, but is not a production set up. Code should be refactored into Terraform Modules. Autoscaling groups should be added to each ec2 instance. Potentially user data scripts could configure each host on start up.
+The terraform code that enables this blog is great for demos, but is not a production set up. The code should be refactored into Terraform Modules. Autoscaling groups should be added to each ec2 instance. Potentially user data scripts could configure each host on start up.
