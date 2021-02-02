@@ -4,7 +4,8 @@ cd "$(dirname "$0")"
 echo "________Build AWX CLI Docker Image________"
 docker build . -t localhost/awx:latest
 
-alias awx="docker run --network host --rm -it --env TOWER_HOST=http://localhost:8052 --env TOWER_USERNAME=admin --env TOWER_PASSWORD=password localhost/awx:latest awx"
+shopt -s expand_aliases
+alias awx="docker run --network host --rm -it -v "${HOME}/.ssh:${HOME}/.ssh" --env TOWER_HOST=http://localhost:8052 --env TOWER_USERNAME=admin --env TOWER_PASSWORD=password localhost/awx:latest awx"
 
 echo "________Create Default Organization________"
 awx organizations create --name Default
@@ -37,7 +38,8 @@ awx inventory_sources create \
 echo "________Create Machine Credential from SSH Key________"
 awx credentials create --credential_type 'Machine' \
     --name 'AWS Key' --organization Default \
-    --inputs '{"username": "centos", "ssh_key_data": "@~/.ssh/id_rsa"}'
+    --inputs '{"username": "centos", "ssh_key_data": "@'${HOME}'/.ssh/id_rsa"}'
+
 
 echo "________Create Deployment Job________"
 awx job_templates create \
