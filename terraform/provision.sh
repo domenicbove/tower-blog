@@ -7,3 +7,5 @@ alias terraform="docker run -it --rm -v '$(pwd):$(pwd)' -w '$(pwd)' hashicorp/te
 terraform init
 
 terraform apply --auto-approve
+
+unalias terraform

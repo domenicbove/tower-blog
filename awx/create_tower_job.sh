@@ -50,3 +50,5 @@ awx job_templates create \
 echo "________Associate Machine Credential to Job________"
 awx job_template associate \
     --credential 'AWS Key' 'Deploy on AWS'
+
+unalias awx
